@@ -1,0 +1,248 @@
+Let’s take a look at data type fundamentals in JavaScript! Firstly we’ll learn about each of the different data types, before looking at methods we can use to convert our data (i.e. how we turn values into numbers, strings & Booleans).
+
+By the end of the article, you’ll have an increased understanding of working with many of the major data types. Which is a fundamental skill to pickup, as you move forward with JavaScript.
+
+    This article is part of a series I’m writing on learning the JavaScript fundamentals. Be sure to follow me if you’d like to keep track!
+
+What are Data Types?
+
+Data types are classifications of specific types of data. We have numbers, Booleans (true or false), strings (character sequences enclosed in quotes ‘’ or “”) and more complex data types known as arrays and objects (we’ll look at these a bit later).
+
+
+let a = 1;           // a is a number
+let a = "Avocado";   // a is a string
+let a = true;        // a is a Boolean
+let a;               // a is undefined
+
+
+For example, a, has been defined as a variable using the let keyword. We can assign any data type to it, or even just initialize it by leaving it blank.
+
+Why Does it matter?
+
+When storing data in a variable, it’s important that we know its type, as that determines what we can do with it! For instance, you can add numbers 1 + 1 = 2, and that’s fine. However, if you attempt to add numbers when they have the data type of string “1” + “1” = 11 Your result will be 1 and 1, not the sum equaling 2 as you may have expected. Lets now take a look at each type in detail.
+
+
+Numbers
+
+Numbers in JavaScript can be written with or without decimals, such as:
+
+let a = 1;
+let b = 1.1;
+
+And they can be abbreviated using the e exponent, for example:
+
+let million = 1000000;
+
+// or..
+
+let million = 1e6;
+
+The 6 is the amount of 0’s, which in this case equals one million.
+
+There are a few special values that we often encounter when working with numbers, Infinity, -Infinity and NaN.
+
+If you attempt to divide a number by 0, such as:
+
+
+3/0    // Infinity
+
+The result will be Infinity. As the JavaScript computes the result outside its largest possible number of 9007199254740992. The opposite would yield:
+
+-3/0   // -Infinity
+
+The value of NaN represents ‘Not a Number’, meaning the value isn’t considered a number. This would generate in illegal expressions, such as:
+
+let a = 100 / "Greg";     // a will be NaN
+
+As of course you can’t divide a number by a string!
+
+However, JavaScript is smart enough to convert your data type in some cases, such as:
+
+let a = 100 / "2"         // a will be 50
+
+JavaScript will use type coercion to consider your “2” string to be a number in this case.
+Strings
+
+As mentioned earlier, strings are sequences of characters that exist within either single or double quotes:
+
+let foodChoice = 'Crunchy cheddar jalapeno cheetos';
+let foodChoice = "Crunchy cheddar jalapeno cheetos";
+
+Strings aren’t limited to letters either, numbers and symbols are also acceptable. It’s the quotes that define our string data type.
+
+It really comes down to personal preference as to whether you use single or double quotes, consistency is what’s most important within your code!
+
+
+let eater = “Bruce”;
+let foodChoice = "Crunchy cheddar jalapeno cheetos";
+
+alert(eater + " loves " + foodChoice + "!")
+
+// Bruce loves Crunchy cheddar jalapeno cheetos!
+
+
+Booleans
+
+We use the keywords true and false to set variables as Boolean data type.
+
+let a = true;
+let b = false;
+
+Booleans are especially useful when performing mathematical operations, in determining whether an expression is true or false, such as:
+
+10 > 5     // true, 10 is greater than 5
+5 > 10     // false, 5 is not greater than 10
+5 < 10     // true, 5 is less than 10
+5 = 5      // true, 5 equals 5
+
+
+
+If we assign our expression to a variable, such as:
+
+let a = 10 > 5;   // true
+
+Our variable a will of course, hold the value of true.
+
+Booleans are used within programs when we need to perform operations based on the evaluation of truth or falsehood. For example, do the received login credentials evaluate to true? Grant access ✔️. Or are they false? Deny access ❌.
+
+Arrays
+
+An array is a slightly more complex data type, however they are really quite simple to grasp! An array is a way to have multiple values held by a single variable. For example:
+
+let colors = ["red", "green", "blue", "yellow"]
+
+
+An array is defined by using square brackets [] as in the above example. We’ve assigned an array to the variable colors, contained within are our elements of red, green, blue and yellow.
+
+A call to our colors variable will output our entire array of [“red”, “green”, “blue”, “yellow”].
+
+The true power of arrays is that their contents can be iterated, we can call out a single item within the array variable. To do this we use an index number, inside of square brackets:
+
+colors[0]     // red
+colors[1]     // green
+colors[2]     // blue
+colors[3]     // yellow
+colors[4]     // undefined
+
+
+
+Note: Our first array element always has the index position of 0. So remember to start counting from 0 instead of 1!
+
+Arrays have a large amount of flexibility, they can have elements added, removed and changed. Let’s now take a look at our final data type..
+Objects
+
+The object data type is typically used for holding large amounts of related data. Object data values are stored in key/value pairs, the pairs make for a logical way to store and access our data, using curly braces {}, for example:
+
+let user = {firstName:"Jane", lastName:"Doe", age:34, location:"Vancouver"};
+
+For clarity we’d write this out over multiple lines:
+
+let user = {
+    firstName: "Jane",
+    lastName: "Doe",
+    age: 34,
+    location: "Vancouver"
+};
+
+
+Our above example contains four properties firstName, lastName, age, and location. Our properties can be of any data type, which are accessed using objectName.property as follows:
+
+user.firstName     // Jane
+user.lastName      // Doe
+user.age           // 34
+user.location      // Vancouver
+
+
+And that concludes our first look at data types! Lets now see how we can perform data type conversions.
+
+-> Converting Data Types
+
+As we’ve now seen, data types are classifications of a particular type of data. And it’s the type that determines which operations are able to be performed on the data. As we write programs, we’ll often need to convert our data types in order to perform tasks.
+
+JavaScript is intelligent enough to convert some values for us, this is known as type coercion:
+
+"15" - "5"    // 10
+"15" / "3"    // 5
+
+
+The above will work as our strings evaluate to numbers. However,
+
+"5" + "5"   // 55
+
+If we’re using the + operator, the strings will concatenate! So if we attempted to rely on type coercion in this case, we’d see unexpected results.
+
+For this reason, when writing our own code, we should endeavor to convert data types ourselves — thus reducing potential errors. Lets now take a look at how we can go about that!
+
+Converting Values to Strings
+
+Using the String() method, we can explicitly convert values to strings.
+
+For example, lets take the number 100 and convert it to a string literal “100”.
+
+String(100);     // "100"
+
+And lets convert a Boolean false into a string literal “false”.
+
+String(false);   // "false"
+
+Within a variable, we can convert our value to a string like so:
+
+let name = 5000;       // 5000
+name = String(name);   // "5000"
+
+We can check the data type of any value, using typeof, for example:
+
+typeof name;    // string
+
+Alternatively, we could do this more concisely like so:
+
+let name = 5000;
+name.toString();    // "5000"
+
+(5000).toString();  // also returns "5000"
+
+Regardless of the method we choose, by using String() or n.toString(), we can explicitly convert our data into string values.
+Converting Values to Numbers
+
+When the time comes to convert values into numbers, we use the Number() method in a similar manner:
+
+Number("2000");   // 2000
+
+We’ve turned our string “2000” into the number 2000.
+
+We could also convert a Boolean:
+
+Number(true);    // 1
+Number(false);   // 0
+
+It should be noted however, that we cannot convert our data type into a number if there are any characters or spaces within the string! If this were to be attempted a NaN (not a number) would be returned.
+
+Number("one");      // NaN
+Number("1,000");    // NaN
+Number("1 1");      // NaN
+Number("01-01-19"); // NaN
+
+Converting Values to Booleans
+
+We use Boolean() to convert strings and numbers into Boolean.
+
+If any value is present, it will be converted to true:
+
+Boolean(100);     // true
+Boolean("name");  // true
+Boolean(" ");     // true, a space is considered a value
+
+If the value is considered empty (0, an empty string (""), undefined, NaN or null), it will return false:
+
+Boolean(0);         // false
+Boolean("");        // false, an empty string (with no space)
+Boolean(undefined); // false
+Boolean(NaN);       // false
+Boolean(null);      // false
+
+Converting numbers and strings into Boolean values is a powerful way to start to introduce logic into our programming. For instance, we could detect a missed required field on an input form, if the Boolean returns false.
+
+Conclusion
+
+Understanding and working with data types is a fundamental skill to posses when moving forward with JavaScript. In this article, we looked at data types and how we can work with them, using both type coercion as well as by implicitly performing our own type conversions.
+
